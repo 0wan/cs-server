@@ -1,0 +1,165 @@
+@layout('layouts/chat')
+
+@section('body')
+
+<div class="nk-chat">
+  <div class="nk-chat-aside">
+    <div class="nk-chat-aside-head">
+      <div class="nk-chat-aside-user">
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle dropdown-indicator" data-toggle="dropdown">
+            <div class="user-avatar">
+              <img src="./images/avatar/b-sm.jpg" alt="">
+            </div>
+            <div class="title">Chats</div>
+          </a>
+          <div class="dropdown-menu">
+            <ul class="link-list-opt no-bdr">
+              <li><a href="html/apps/chats-contacts.html"><span>Contacts</span></a></li>
+              <li><a href="html/apps/chats-channels.html"><span>Channels</span></a></li>
+              <li class="divider"></li>
+              <li><a href="#"><span>Help</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- .nk-chat-aside-user -->
+      <ul class="nk-chat-aside-tools g-2">
+        <li>
+          <div class="dropdown">
+            <a href="#" class="btn btn-round btn-icon btn-light dropdown-toggle" data-toggle="dropdown">
+              <em class="icon ni ni-setting-alt-fill"></em>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <ul class="link-list-opt no-bdr">
+                <li><a href="#"><span>Settings</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#"><span>Message Requests</span></a></li>
+                <li><a href="#"><span>Archives Chats</span></a></li>
+                <li><a href="#"><span>Unread Chats</span></a></li>
+                <li><a href="#"><span>Group Chats</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#" class="btn btn-round btn-icon btn-light">
+            <em class="icon ni ni-edit-alt-fill"></em>
+          </a>
+        </li>
+      </ul><!-- .nk-chat-aside-tools -->
+    </div><!-- .nk-chat-aside-head -->
+    <div class="nk-chat-aside-body" data-simplebar>
+      <div class="nk-chat-aside-search">
+        <div class="form-group">
+          <div class="form-control-wrap">
+            <div class="form-icon form-icon-left">
+              <em class="icon ni ni-search"></em>
+            </div>
+            <input type="text" class="form-control form-round" id="default-03" placeholder="Search by name">
+          </div>
+        </div>
+      </div><!-- .nk-chat-aside-search -->
+
+      <div class="nk-chat-list">
+        <h6 class="title overline-title-alt">Messages</h6>
+        <ul class="chat-list" id="chat-user-list">
+          @!chat.chatUserItem()
+        </ul><!-- .chat-list -->
+      </div><!-- .nk-chat-list -->
+    </div>
+  </div><!-- .nk-chat-aside -->
+  <div class="nk-chat-body "> <!--profile-shown-->
+
+    <div id="chat-idle" class="nk-chat-blank d-none">
+      <div class="nk-chat-blank-icon">
+        <em class="icon icon-circle icon-circle-xxl bg-white ni ni-chat"></em>
+      </div>
+      <div class="nk-chat-blank-btn">
+        <a href="#" class="btn btn-primary">Mulai Chat</a>
+      </div>
+    </div>
+
+    <div class="nk-chat-head">
+      <ul class="nk-chat-head-info">
+        <li class="nk-chat-body-close">
+          <a href="#" class="btn btn-icon btn-trigger nk-chat-hide ml-n1"><em class="icon ni ni-arrow-left"></em></a>
+        </li>
+        <li class="nk-chat-head-user">
+          <div class="user-card">
+            @!chat.chatAvatar({ size: 'md' })
+            <div class="user-info">
+              <div class="lead-text" id="chat-current-name">Current Chat Name</div>
+              <div class="sub-text" id="chat-current-status"><span class="d-none d-sm-inline mr-1">Active </span> Time Ago</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="nk-chat-head-tools">
+        <li><a href="#" class="btn btn-icon btn-trigger text-primary"><em class="icon ni ni-call-fill"></em></a></li>
+        <li><a href="#" class="btn btn-icon btn-trigger text-primary"><em class="icon ni ni-video-fill"></em></a></li>
+        <li class="d-none d-sm-block">
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger text-primary" data-toggle="dropdown"><em class="icon ni ni-setting-fill"></em></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <ul class="link-list-opt no-bdr">
+                <li><a class="dropdown-item" href="#"><em class="icon ni ni-archive"></em><span>Make as Archive</span></a></li>
+                <li><a class="dropdown-item" href="#"><em class="icon ni ni-cross-c"></em><span>Remove Conversion</span></a></li>
+                <li><a class="dropdown-item" href="#"><em class="icon ni ni-setting"></em><span>More Options</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="mr-n1 mr-md-n2"><a href="#" class="btn btn-icon btn-trigger text-primary chat-profile-toggle"><em class="icon ni ni-alert-circle-fill"></em></a></li>
+      </ul>
+      <div class="nk-chat-head-search">
+        <div class="form-group">
+          <div class="form-control-wrap">
+            <div class="form-icon form-icon-left">
+              <em class="icon ni ni-search"></em>
+            </div>
+            <input type="text" class="form-control form-round" id="chat-search" placeholder="Search in Conversation">
+          </div>
+        </div>
+      </div><!-- .nk-chat-head-search -->
+    </div><!-- .nk-chat-head -->
+    <div class="nk-chat-panel" id="chat-messages" data-simplebar>
+
+      <!-- .CHAT LOOP. -->
+      <!-- .CHAT LOOP. -->
+      <!-- .CHAT LOOP. -->
+      <!-- .CHAT LOOP. -->
+
+    </div><!-- .nk-chat-panel -->
+    <div class="nk-chat-editor">
+      <div class="nk-chat-editor-upload  ml-n1">
+        <a href="#" class="btn btn-sm btn-icon btn-trigger text-primary toggle-opt" data-target="chat-upload"><em class="icon ni ni-plus-circle-fill"></em></a>
+        <div class="chat-upload-option" data-content="chat-upload">
+          <ul class="">
+            <li><a href="#"><em class="icon ni ni-img-fill"></em></a></li>
+            <li><a href="#"><em class="icon ni ni-camera-fill"></em></a></li>
+            <li><a href="#"><em class="icon ni ni-mic"></em></a></li>
+            <li><a href="#"><em class="icon ni ni-grid-sq"></em></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nk-chat-editor-form">
+        <div class="form-control-wrap">
+          <textarea class="form-control form-control-simple no-resize" rows="1" id="default-textarea" placeholder="Type your message..."></textarea>
+        </div>
+      </div>
+      <ul class="nk-chat-editor-tools g-2">
+        <li>
+          <a href="#" class="btn btn-sm btn-icon btn-trigger text-primary"><em class="icon ni ni-happyf-fill"></em></a>
+        </li>
+        <li>
+          <button class="btn btn-round btn-primary btn-icon"><em class="icon ni ni-send-alt"></em></button>
+        </li>
+      </ul>
+    </div><!-- .nk-chat-editor -->
+
+   @!chat.chatProfile()
+
+  </div><!-- .nk-chat-body -->
+</div><!-- .nk-chat -->
+
+@end

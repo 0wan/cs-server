@@ -1,0 +1,10 @@
+@set('classes', 'md')
+@if(size === 'sm')
+@set('classes', 'sm')
+@elseif(size === 'lg')
+@set('classes', 'lg')
+@end
+
+<div class="user-avatar {{ classes }} bg-purple">
+  <span>XX</span>
+</div>

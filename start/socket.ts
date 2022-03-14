@@ -1,6 +1,6 @@
-import Socket from "App/Services/Socket";
+import Socket from 'App/Services/Socket'
 
-Socket.boot();
+Socket.boot()
 
 /**
  * Listen for incoming socket connections
