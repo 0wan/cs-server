@@ -87,6 +87,20 @@ class Whatsapp {
     return number
   }
 
+  // chats
+  public async getChats() {
+    if (!this.authenticated) return false;
+
+    return await this.client.getState();
+  }
+
+  public async getChatById(number) {
+    if (!this.authenticated) return false;
+
+    number = this.formatNumber(number)
+    return await this.client.getChatById(number)
+  }
+
   public async sendMessage(number, message, options = {}) {
     number = this.formatNumber(number)
     await this.client.sendMessage(number, message, options)

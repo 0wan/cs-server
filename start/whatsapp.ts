@@ -8,6 +8,12 @@ Whatsapp.client.on('message', async (message) => {
   // Download
   if (message.hasMedia) {
   }
+
+  // Current Chat Update
+  Socket.io.emit('wa:message:' + message.from, { data: message })
+
+  // Global Update
+  Socket.io.emit('wa:message', { data: message })
 })
 
 Whatsapp.client.on('message_ack', (message) => {
@@ -30,7 +36,7 @@ Whatsapp.client.on('media_uploaded', (message) => {
 Whatsapp.client.on('qr', (qr) => {
   if (!Whatsapp.authenticated)
     qrcode.toDataURL(qr, (_err, result) => {
-      Socket.io.emit('wa:qr', result)
+      Socket.io.emit('wa:qr', { data: result })
     })
 })
 

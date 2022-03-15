@@ -62,8 +62,10 @@
 
       <div class="nk-chat-list">
         <h6 class="title overline-title-alt">Messages</h6>
-        <ul class="chat-list" id="chat-user-list">
+        <ul class="chat-list" id="chat-user-list" x-data>
+          <template x-for="item in 7">
           @!chat.chatUserItem()
+          </template>
         </ul><!-- .chat-list -->
       </div><!-- .nk-chat-list -->
     </div>
@@ -162,4 +164,53 @@
   </div><!-- .nk-chat-body -->
 </div><!-- .nk-chat -->
 
+@end
+
+@section('scripts')
+  @super
+  @include('components/chat/chat-auth-qrcode')
+
+  <script type="text/javascript">
+    // document.addEventListener('DOMContentLoaded', function () {
+    $(function(){
+      'use strict'
+
+      var activePhoneChat = null;
+      var isAuthenticated = false;
+
+
+      function getChatItems() {
+        window.io.emit('');
+      }
+
+      function makeChatItemsList() {
+
+      }
+
+      function makeChatItem(payload) {
+
+      }
+
+      /**
+       * Mendapatkan semua pesan berdasarkan id
+       */
+      function getChatMessages(phone) {
+
+      }
+
+      window.io.on('wa:qr', function (payload) {
+        // console.log(payload)
+        $('#auth-qr').attr('src', payload.data)
+        $('#auth-qr-modal').modal('show')
+      })
+
+      window.io.on('wa:authenticated', function () {
+        isAuthenticated = true
+        $('#auth-qr-modal').modal('hide')
+
+        dispatchEvent(new CustomEvent('wa:authenticated'))
+      })
+
+    })
+  </script>
 @end
